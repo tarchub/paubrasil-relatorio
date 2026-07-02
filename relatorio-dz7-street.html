@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>DZ7 Street — Relatório Meta Ads</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;}
+  :root{
+    --bg:#0a0a0c;
+    --card:#141418;
+    --card2:#1a1a20;
+    --brd:rgba(255,255,255,.07);
+    --brd2:rgba(255,255,255,.13);
+    --text:#f5f5f7;
+    --muted:#8b8b94;
+    --muted2:#59595f;
+    --pink:#d6249f;
+    --orange:#ff7a1a;
+    --gold:#f5c518;
+    --grad:linear-gradient(115deg,var(--pink),var(--orange) 55%,var(--gold));
+    --fb:#1877f2;
+    --ig1:#d6249f;--ig2:#f5c518;
+    --ok:#2fbf6f;
+  }
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    line-height:1.45;
+    padding-bottom:36px;
+  }
+
+  header{
+    position:relative;
+    overflow:hidden;
+    background:radial-gradient(120% 140% at 85% -10%,#2a0f22 0%,#0a0a0c 55%),var(--bg);
+    padding:32px 20px 26px;
+    text-align:center;
+    border-bottom:1px solid var(--brd);
+  }
+  header::before{
+    content:'';position:absolute;top:-70px;left:-50px;width:220px;height:220px;border-radius:50%;
+    background:var(--grad);opacity:.16;filter:blur(34px);
+  }
+  header .tag{
+    position:relative;z-index:1;
+    font-size:10.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--gold);margin-bottom:8px;
+  }
+  header h1{
+    position:relative;z-index:1;
+    font-size:28px;font-weight:800;line-height:1.15;letter-spacing:.01em;
+    background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  header .sub{
+    position:relative;z-index:1;
+    font-size:12.5px;color:var(--muted);margin-top:6px;
+  }
+  header .period{
+    position:relative;z-index:1;
+    margin-top:14px;display:inline-block;font-size:12px;font-weight:600;
+    background:rgba(214,36,159,.1);border:1px solid rgba(245,197,24,.3);color:var(--gold);
+    border-radius:20px;padding:6px 16px;
+  }
+
+  main{max-width:480px;margin:0 auto;padding:18px 16px;}
+
+  .section-title{
+    font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--muted2);margin:26px 0 10px;display:flex;align-items:center;gap:8px;
+  }
+  .section-title::before{content:'';width:10px;height:2px;background:var(--grad);border-radius:2px;}
+
+  .kpi-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+  .kpi{background:var(--card);border:1px solid var(--brd);border-radius:14px;padding:14px;}
+  .kpi .lbl{font-size:11px;color:var(--muted);font-weight:600;margin-bottom:5px;}
+  .kpi .val{font-size:20px;font-weight:800;color:var(--text);}
+  .kpi.hl{
+    background:linear-gradient(160deg,rgba(214,36,159,.14),rgba(245,197,24,.05));
+    border:1px solid rgba(245,197,24,.28);
+  }
+  .kpi.hl .val{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;}
+
+  .card{background:var(--card);border:1px solid var(--brd);border-radius:14px;padding:16px;margin-bottom:12px;}
+  .card .top{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin-bottom:10px;}
+  .card .name{font-size:14.5px;font-weight:700;color:var(--text);}
+  .badge{font-size:9.5px;font-weight:700;letter-spacing:.03em;padding:4px 10px;border-radius:20px;white-space:nowrap;}
+  .badge.active{background:rgba(47,191,111,.14);color:#4ede8f;border:1px solid rgba(47,191,111,.3);}
+  .badge.paused{background:rgba(255,255,255,.06);color:var(--muted);border:1px solid var(--brd);}
+  .badge.best{background:rgba(245,197,24,.14);color:var(--gold);border:1px solid rgba(245,197,24,.35);}
+
+  .metrics-row{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:8px;}
+  .metrics-row .m-lbl{font-size:10.5px;color:var(--muted2);}
+  .metrics-row .m-val{font-size:14px;font-weight:700;color:var(--text);}
+  .result-line{margin-top:10px;padding-top:10px;border-top:1px dashed var(--brd);font-size:13px;color:#c3c3ca;}
+  .result-line b{color:var(--gold);}
+
+  .chart{background:var(--card);border:1px solid var(--brd);border-radius:14px;padding:16px 16px 12px;}
+  .bars{display:flex;align-items:flex-end;gap:2.5px;height:100px;}
+  .bar-wrap{flex:1;height:100%;display:flex;align-items:flex-end;}
+  .bar{width:100%;background:var(--grad);border-radius:3px 3px 1px 1px;min-height:3px;}
+  .chart-axis{display:flex;justify-content:space-between;font-size:10px;color:var(--muted2);margin-top:8px;}
+
+  .barrow{margin-bottom:14px;}
+  .barrow:last-child{margin-bottom:0;}
+  .br-top{display:flex;justify-content:space-between;align-items:baseline;font-size:13px;margin-bottom:6px;}
+  .br-lbl{font-weight:700;color:var(--text);}
+  .br-val{font-size:11.5px;color:var(--muted);font-weight:600;}
+  .br-track{height:8px;background:#1e1e24;border-radius:6px;overflow:hidden;}
+  .br-fill{height:100%;background:var(--grad);border-radius:6px;}
+  .br-sub{font-size:11px;color:var(--muted2);margin-top:5px;}
+
+  .plat-grid{display:grid;grid-template-columns:1fr;gap:10px;}
+  .plat-card{background:var(--card);border:1px solid var(--brd);border-radius:14px;padding:14px 16px;display:flex;align-items:center;gap:12px;}
+  .plat-dot{width:34px;height:34px;border-radius:10px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:800;color:#fff;}
+  .plat-dot.fb{background:var(--fb);}
+  .plat-dot.ig{background:linear-gradient(135deg,var(--ig2),var(--ig1));}
+  .plat-info{flex:1;}
+  .plat-name{font-size:13.5px;font-weight:700;color:var(--text);margin-bottom:2px;}
+  .plat-meta{font-size:11px;color:var(--muted);}
+  .plat-share{text-align:right;}
+  .plat-share .p-val{font-size:15px;font-weight:800;color:var(--text);}
+  .plat-share .p-pct{font-size:10.5px;color:var(--muted2);}
+
+  .insight{
+    background:linear-gradient(160deg,rgba(214,36,159,.1),rgba(245,197,24,.04));
+    border:1px solid rgba(245,197,24,.25);border-radius:14px;
+    padding:14px 16px;margin-bottom:12px;font-size:13px;color:#e6dfd0;
+  }
+  .insight b{color:var(--gold);}
+
+  .note{
+    font-size:12.5px;color:#c3c3ca;background:var(--card);border:1px solid var(--brd);
+    border-radius:14px;padding:14px 16px;margin-top:6px;
+  }
+  .note b{color:var(--gold);}
+
+  footer{text-align:center;font-size:11px;color:var(--muted2);padding:24px 20px 4px;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="tag">Meta Ads · Relatório de Desempenho</div>
+  <h1>DZ7 Street</h1>
+  <div class="sub">Loja de Tênis · Boa Vista/RR</div>
+  <div class="period">02 Jun — 01 Jul 2026 · Últimos 30 dias</div>
+</header>
+
+<main>
+
+  <div class="section-title">Resumo do período</div>
+  <div class="kpi-grid">
+    <div class="kpi hl">
+      <div class="lbl">Investimento</div>
+      <div class="val">R$ 1.479,47</div>
+    </div>
+    <div class="kpi hl">
+      <div class="lbl">Visitas ao perfil</div>
+      <div class="val">19.553</div>
+    </div>
+    <div class="kpi">
+      <div class="lbl">Impressões</div>
+      <div class="val">287.290</div>
+    </div>
+    <div class="kpi">
+      <div class="lbl">Alcance</div>
+      <div class="val">104.964</div>
+    </div>
+    <div class="kpi">
+      <div class="lbl">Cliques</div>
+      <div class="val">18.242</div>
+    </div>
+    <div class="kpi">
+      <div class="lbl">CTR</div>
+      <div class="val">6,35%</div>
+    </div>
+    <div class="kpi">
+      <div class="lbl">CPC médio</div>
+      <div class="val">R$ 0,08</div>
+    </div>
+    <div class="kpi">
+      <div class="lbl">CPM médio</div>
+      <div class="val">R$ 5,15</div>
+    </div>
+    <div class="kpi">
+      <div class="lbl">Custo por visita</div>
+      <div class="val">R$ 0,08</div>
+    </div>
+    <div class="kpi">
+      <div class="lbl">Frequência</div>
+      <div class="val">2,74</div>
+    </div>
+  </div>
+
+  <div class="insight">
+    <b>Sobre o objetivo:</b> as campanhas ativas otimizam para tráfego/visitas ao perfil do Instagram, não para vendas diretas. Os números acima medem alcance e engajamento — não representam pedidos fechados.
+  </div>
+
+  <div class="section-title">Investimento por dia</div>
+  <div class="chart">
+    <div class="bars">
+      <div class="bar-wrap"><div class="bar" style="height:76.7%"></div></div>
+      <div class="bar-wrap"><div class="bar" style="height:66.4%"></div></div>
+      <div class="bar-wrap"><div class="bar" style="height:78.6%"></div></div>
+      <div class="bar-wrap"><div class="bar" style="height:76.9%"></div></div>
+      <div class="bar-wrap"><div class="bar" style="height:79.2%"></div></div>
+      <div class="bar-wrap"><div class="bar" style="height:84.3%"></div></div>
+      <div class="bar-wrap"><div class="bar" style="height:82.1%"></div></div>
+      <div class="bar-wrap"><div class="bar" style="height:84.9%"></div></div>
+      <div class="bar-wrap"><div class="bar" style="height:78.9%"></div></div>
+      <div class="bar-wrap"><div class="bar" style="height:79.4%"></div></div>
+      <div class="bar-wrap"><div class="bar" style="height:82.7%"></div></div>
+      <div class="bar-wrap"><div class="bar" style="height:75.2%"></div></div>
+      <div class="bar-wrap"><div class="bar" style="height:67.9%"></div></div>
+      <div class="bar-wrap"><div class="bar" style="height:73.4%"></div></div>
+      <div class="bar-wrap"><div class="bar" style="height:76.8%"></div></div>
+      <div class="bar-wrap"><div class="bar" style="height:85.8%"></div></div>
+      <div class="bar-wrap"><div class="bar" style="height:84.3%"></div></div>
+      <div class="bar-wrap"><div class="bar" style="height:91.0%"></div></div>
+      <div class="bar-wrap"><div class="bar" style="height:92.3%"></div></div>
+      <div class="bar-wrap"><div class="bar" style="height:79.9%"></div></div>
+      <div class="bar-wrap"><div class="bar" style="height:81.1%"></div></div>
+      <div class="bar-wrap"><div class="bar" style="height:76.8%"></div></div>
+      <div class="bar-wrap"><div class="bar" style="height:86.9%"></div></div>
+      <div class="bar-wrap"><div class="bar" style="height:70.1%"></div></div>
+      <div class="bar-wrap"><div class="bar" style="height:77.0%"></div></div>
+      <div class="bar-wrap"><div class="bar" style="height:100%"></div></div>
+      <div class="bar-wrap"><div class="bar" style="height:85.5%"></div></div>
+      <div class="bar-wrap"><div class="bar" style="height:95.7%"></div></div>
+      <div class="bar-wrap"><div class="bar" style="height:75.5%"></div></div>
+      <div class="bar-wrap"><div class="bar" style="height:72.0%"></div></div>
+    </div>
+    <div class="chart-axis"><span>02/06</span><span>16/06</span><span>01/07</span></div>
+  </div>
+
+  <div class="section-title">Público por idade</div>
+  <div class="card">
+    <div class="barrow">
+      <div class="br-top"><span class="br-lbl">25-34 anos</span><span class="br-val">R$ 601,19 · 40,6%</span></div>
+      <div class="br-track"><div class="br-fill" style="width:40.6%"></div></div>
+      <div class="br-sub">CTR 6,35% · CPC R$ 0,08 · CPM R$ 4,87</div>
+    </div>
+    <div class="barrow">
+      <div class="br-top"><span class="br-lbl">18-24 anos</span><span class="br-val">R$ 374,72 · 25,3%</span></div>
+      <div class="br-track"><div class="br-fill" style="width:25.3%"></div></div>
+      <div class="br-sub">CTR 5,70% · CPC R$ 0,07 · CPM R$ 4,23</div>
+    </div>
+    <div class="barrow">
+      <div class="br-top"><span class="br-lbl">35-44 anos</span><span class="br-val">R$ 348,16 · 23,5%</span></div>
+      <div class="br-track"><div class="br-fill" style="width:23.5%"></div></div>
+      <div class="br-sub">CTR 6,79% · CPC R$ 0,09 · CPM R$ 6,37</div>
+    </div>
+    <div class="barrow">
+      <div class="br-top"><span class="br-lbl">45-54 anos</span><span class="br-val">R$ 127,46 · 8,6%</span></div>
+      <div class="br-track"><div class="br-fill" style="width:8.6%"></div></div>
+      <div class="br-sub">CTR 8,12% · CPC R$ 0,09 · CPM R$ 7,69</div>
+    </div>
+    <div class="barrow">
+      <div class="br-top"><span class="br-lbl">55-64 anos</span><span class="br-val">R$ 21,97 · 1,5%</span></div>
+      <div class="br-track"><div class="br-fill" style="width:1.5%"></div></div>
+      <div class="br-sub">CTR 7,26% · CPC R$ 0,10</div>
+    </div>
+    <div class="barrow">
+      <div class="br-top"><span class="br-lbl">65+ anos</span><span class="br-val">R$ 5,90 · 0,4%</span></div>
+      <div class="br-track"><div class="br-fill" style="width:0.4%"></div></div>
+      <div class="br-sub">CTR 7,42% · CPC R$ 0,08</div>
+    </div>
+  </div>
+
+  <div class="section-title">Público por gênero</div>
+  <div class="card">
+    <div class="barrow">
+      <div class="br-top"><span class="br-lbl">Mulheres</span><span class="br-val">R$ 933,76 · 63,1%</span></div>
+      <div class="br-track"><div class="br-fill" style="width:63.1%"></div></div>
+      <div class="br-sub">176.748 impressões · CTR 6,74% · CPC R$ 0,08</div>
+    </div>
+    <div class="barrow">
+      <div class="br-top"><span class="br-lbl">Homens</span><span class="br-val">R$ 541,40 · 36,6%</span></div>
+      <div class="br-track"><div class="br-fill" style="width:36.6%"></div></div>
+      <div class="br-sub">109.686 impressões · CTR 5,72% · CPC R$ 0,09</div>
+    </div>
+  </div>
+
+  <div class="insight">
+    <b>Público predominante:</b> mulheres de 25-44 anos concentram boa parte do investimento e têm o CTR mais alto — perfil forte para linhas de tênis casual/lifestyle, não só streetwear masculino.
+  </div>
+
+  <div class="section-title">Plataforma</div>
+  <div class="plat-grid">
+    <div class="plat-card">
+      <div class="plat-dot ig">◎</div>
+      <div class="plat-info">
+        <div class="plat-name">Instagram</div>
+        <div class="plat-meta">281.658 impr · CTR 6,30% · CPC R$ 0,08</div>
+      </div>
+      <div class="plat-share"><div class="p-val">R$ 1.448,79</div><div class="p-pct">97,9%</div></div>
+    </div>
+    <div class="plat-card">
+      <div class="plat-dot fb">f</div>
+      <div class="plat-info">
+        <div class="plat-name">Facebook</div>
+        <div class="plat-meta">5.632 impr · CTR 8,59% · CPC R$ 0,06</div>
+      </div>
+      <div class="plat-share"><div class="p-val">R$ 30,68</div><div class="p-pct">2,1%</div></div>
+    </div>
+  </div>
+
+  <div class="section-title">Posicionamento</div>
+  <div class="card">
+    <div class="barrow">
+      <div class="br-top"><span class="br-lbl">Stories Instagram</span><span class="br-val">R$ 666,26 · 45,0%</span></div>
+      <div class="br-track"><div class="br-fill" style="width:45.0%"></div></div>
+      <div class="br-sub">135.398 impr · CTR 6,10% · CPC R$ 0,08</div>
+    </div>
+    <div class="barrow">
+      <div class="br-top"><span class="br-lbl">Feed (FB + IG)</span><span class="br-val">R$ 409,84 · 27,7%</span></div>
+      <div class="br-track"><div class="br-fill" style="width:27.7%"></div></div>
+      <div class="br-sub">72.254 impr · CTR 7,17% · CPC R$ 0,08</div>
+    </div>
+    <div class="barrow">
+      <div class="br-top"><span class="br-lbl">Reels Instagram</span><span class="br-val">R$ 383,59 · 25,9%</span></div>
+      <div class="br-track"><div class="br-fill" style="width:25.9%"></div></div>
+      <div class="br-sub">75.804 impr · CTR 6,08% · CPC R$ 0,08</div>
+    </div>
+    <div class="barrow">
+      <div class="br-top"><span class="br-lbl">Reels Facebook</span><span class="br-val">R$ 9,16 · 0,6%</span></div>
+      <div class="br-track"><div class="br-fill" style="width:0.6%"></div></div>
+      <div class="br-sub">1.298 impr · CTR 7,70% · CPC R$ 0,09</div>
+    </div>
+    <div class="barrow">
+      <div class="br-top"><span class="br-lbl">Stories Facebook</span><span class="br-val">R$ 8,65 · 0,6%</span></div>
+      <div class="br-track"><div class="br-fill" style="width:0.6%"></div></div>
+      <div class="br-sub">1.472 impr · CTR 5,23% · CPC R$ 0,11</div>
+    </div>
+    <div class="barrow">
+      <div class="br-top"><span class="br-lbl">Explorar (Instagram)</span><span class="br-val">R$ 1,96 · 0,1%</span></div>
+      <div class="br-track"><div class="br-fill" style="width:0.1%"></div></div>
+      <div class="br-sub">1.064 impr · CTR 2,16% · CPC R$ 0,09</div>
+    </div>
+  </div>
+
+  <div class="insight">
+    <b>Stories domina o resultado:</b> quase metade do orçamento roda em Stories do Instagram, com custo por clique consistente em torno de R$ 0,08 — mantenha os criativos no formato vertical 9:16.
+  </div>
+
+  <div class="section-title">Campanhas</div>
+
+  <div class="card">
+    <div class="top">
+      <div class="name">[PERFIL] - 22.05</div>
+      <span class="badge active">Ativa</span>
+    </div>
+    <div class="metrics-row">
+      <div><div class="m-lbl">Gasto</div><div class="m-val">R$ 739,89</div></div>
+      <div><div class="m-lbl">Impressões</div><div class="m-val">138.897</div></div>
+      <div><div class="m-lbl">Cliques</div><div class="m-val">10.676</div></div>
+      <div><div class="m-lbl">CTR</div><div class="m-val">7,69%</div></div>
+      <div><div class="m-lbl">CPC</div><div class="m-val">R$ 0,07</div></div>
+      <div><div class="m-lbl">CPM</div><div class="m-val">R$ 5,33</div></div>
+    </div>
+    <div class="result-line">11.245 visitas ao perfil · custo por resultado <b>R$ 0,07</b></div>
+  </div>
+
+  <div class="card">
+    <div class="top">
+      <div class="name">[TRAFEGO - PERFIL]</div>
+      <span class="badge active">Ativa</span>
+    </div>
+    <div class="metrics-row">
+      <div><div class="m-lbl">Gasto</div><div class="m-val">R$ 739,58</div></div>
+      <div><div class="m-lbl">Impressões</div><div class="m-val">148.393</div></div>
+      <div><div class="m-lbl">Cliques</div><div class="m-val">7.566</div></div>
+      <div><div class="m-lbl">CTR</div><div class="m-val">5,10%</div></div>
+      <div><div class="m-lbl">CPC</div><div class="m-val">R$ 0,10</div></div>
+      <div><div class="m-lbl">CPM</div><div class="m-val">R$ 4,98</div></div>
+    </div>
+    <div class="result-line">8.308 visitas ao perfil · custo por resultado <b>R$ 0,09</b></div>
+  </div>
+
+  <div class="section-title">Melhores anúncios (criativos)</div>
+
+  <div class="card">
+    <div class="top">
+      <div class="name">AD 04 — Cópia (22.05)</div>
+      <span class="badge best">Melhor custo/resultado</span>
+    </div>
+    <div class="metrics-row">
+      <div><div class="m-lbl">Gasto</div><div class="m-val">R$ 732,29</div></div>
+      <div><div class="m-lbl">CTR</div><div class="m-val">7,73%</div></div>
+      <div><div class="m-lbl">CPC</div><div class="m-val">R$ 0,07</div></div>
+    </div>
+    <div class="result-line">11.176 visitas · custo por resultado <b>R$ 0,07</b></div>
+  </div>
+
+  <div class="card">
+    <div class="top">
+      <div class="name">AD 04 — Cópia (Tráfego perfil)</div>
+    </div>
+    <div class="metrics-row">
+      <div><div class="m-lbl">Gasto</div><div class="m-val">R$ 672,37</div></div>
+      <div><div class="m-lbl">CTR</div><div class="m-val">5,40%</div></div>
+      <div><div class="m-lbl">CPC</div><div class="m-val">R$ 0,09</div></div>
+    </div>
+    <div class="result-line">7.777 visitas · custo por resultado <b>R$ 0,09</b></div>
+  </div>
+
+  <div class="card">
+    <div class="top">
+      <div class="name">AD 02</div>
+    </div>
+    <div class="metrics-row">
+      <div><div class="m-lbl">Gasto</div><div class="m-val">R$ 49,45</div></div>
+      <div><div class="m-lbl">CTR</div><div class="m-val">2,86%</div></div>
+      <div><div class="m-lbl">CPC</div><div class="m-val">R$ 0,13</div></div>
+    </div>
+    <div class="result-line">441 visitas · custo por resultado <b>R$ 0,11</b></div>
+  </div>
+
+  <div class="card">
+    <div class="top">
+      <div class="name">AD 01</div>
+    </div>
+    <div class="metrics-row">
+      <div><div class="m-lbl">Gasto</div><div class="m-val">R$ 12,00</div></div>
+      <div><div class="m-lbl">CTR</div><div class="m-val">2,40%</div></div>
+      <div><div class="m-lbl">CPC</div><div class="m-val">R$ 0,24</div></div>
+    </div>
+    <div class="result-line">52 visitas · custo por resultado <b>R$ 0,23</b></div>
+  </div>
+
+  <div class="card">
+    <div class="top">
+      <div class="name">Outros criativos (4 variações)</div>
+    </div>
+    <div class="metrics-row">
+      <div><div class="m-lbl">Gasto total</div><div class="m-val">R$ 11,78</div></div>
+      <div><div class="m-lbl">Impressões</div><div class="m-val">2.409</div></div>
+      <div><div class="m-lbl">Cliques</div><div class="m-val">69</div></div>
+    </div>
+    <div class="result-line">AD 04, NIKE DN PRETO, AD 01 e AD 03 — testes pequenos, volume baixo (0,8% do orçamento)</div>
+  </div>
+
+  <div class="section-title">O que fazer agora</div>
+  <div class="note">
+    1. O <b>AD 04 — Cópia</b> (campanha 22.05) é o criativo mais eficiente (R$ 0,07 por visita) — priorizar verba nele.<br><br>
+    2. Todo o investimento atual está em tráfego para o perfil do Instagram, sem campanha de vendas/WhatsApp ativa — vale testar uma campanha de conversão para transformar esse volume de visitas em pedidos.<br><br>
+    3. <b>Stories do Instagram</b> concentra quase metade do orçamento e performa bem — manter o ritmo de criativos verticais nesse formato.<br><br>
+    4. Facebook representa só 2% do investimento — pouco relevante aqui, o público está quase todo no Instagram.<br><br>
+    5. Score de oportunidade da Meta para a conta: <b>100/100</b>, sem alertas de fadiga de criativo ou público restrito no período.
+  </div>
+
+  <footer>
+    Relatório gerado automaticamente com dados da Meta Ads API · Conta: DZ7 STREET NOVA
+  </footer>
+
+</main>
+
+</body>
+</html>
