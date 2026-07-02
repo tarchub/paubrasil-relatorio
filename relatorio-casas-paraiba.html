@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Casas Paraíba — Relatório Meta Ads</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+    background:#f2f4f7;
+    color:#1a1d23;
+    line-height:1.45;
+    padding-bottom:32px;
+  }
+  header{
+    background:linear-gradient(135deg,#0f3d91,#1877f2);
+    color:#fff;
+    padding:28px 20px 24px;
+    text-align:center;
+  }
+  header .tag{
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    opacity:.85;
+    margin-bottom:6px;
+  }
+  header h1{
+    font-size:24px;
+    font-weight:800;
+    line-height:1.2;
+  }
+  header .period{
+    margin-top:10px;
+    display:inline-block;
+    font-size:12.5px;
+    background:rgba(255,255,255,.16);
+    border:1px solid rgba(255,255,255,.3);
+    border-radius:20px;
+    padding:5px 14px;
+  }
+
+  main{max-width:480px;margin:0 auto;padding:16px;}
+
+  .alert{
+    background:#fff4e5;
+    border:1px solid #f5c26b;
+    border-left:4px solid #e8912d;
+    border-radius:10px;
+    padding:14px 16px;
+    margin-bottom:18px;
+    font-size:13.5px;
+  }
+  .alert b{color:#8a4b00;display:block;font-size:14px;margin-bottom:4px;}
+
+  .section-title{
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    color:#5a6472;
+    margin:22px 0 10px;
+  }
+
+  .kpi-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+  }
+  .kpi{
+    background:#fff;
+    border-radius:12px;
+    padding:14px;
+    box-shadow:0 1px 3px rgba(16,24,40,.06);
+  }
+  .kpi .lbl{font-size:11.5px;color:#667085;font-weight:600;margin-bottom:4px;}
+  .kpi .val{font-size:20px;font-weight:800;color:#0f172a;}
+  .kpi.hl{background:#eaf2ff;}
+  .kpi.hl .val{color:#0f3d91;}
+
+  .card{
+    background:#fff;
+    border-radius:12px;
+    padding:16px;
+    margin-bottom:12px;
+    box-shadow:0 1px 3px rgba(16,24,40,.06);
+  }
+  .card .top{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin-bottom:10px;}
+  .card .name{font-size:14.5px;font-weight:700;color:#0f172a;}
+  .badge{
+    font-size:10px;font-weight:700;letter-spacing:.04em;
+    padding:3px 9px;border-radius:20px;white-space:nowrap;
+  }
+  .badge.active{background:#e6f7ed;color:#1a7f4b;}
+  .badge.paused{background:#f1f2f4;color:#667085;}
+  .metrics-row{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:8px;
+    margin-top:8px;
+  }
+  .metrics-row div{text-align:left;}
+  .metrics-row .m-lbl{font-size:10.5px;color:#8a94a6;}
+  .metrics-row .m-val{font-size:14px;font-weight:700;color:#1a1d23;}
+  .result-line{
+    margin-top:10px;
+    padding-top:10px;
+    border-top:1px dashed #e4e7ec;
+    font-size:13px;
+    color:#344054;
+  }
+  .result-line b{color:#0f3d91;}
+
+  .chart{
+    background:#fff;border-radius:12px;padding:16px 16px 10px;
+    box-shadow:0 1px 3px rgba(16,24,40,.06);
+  }
+  .bars{display:flex;align-items:flex-end;gap:6px;height:110px;}
+  .bar-wrap{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;}
+  .bar{width:100%;background:linear-gradient(180deg,#1877f2,#0f3d91);border-radius:5px 5px 2px 2px;min-height:4px;}
+  .bar-day{font-size:9.5px;color:#98a2b3;margin-top:6px;}
+  .chart-note{font-size:11.5px;color:#98a2b3;margin-top:10px;text-align:center;}
+
+  .note{
+    font-size:12px;color:#667085;background:#fff;border-radius:10px;
+    padding:12px 14px;margin-top:6px;box-shadow:0 1px 3px rgba(16,24,40,.06);
+  }
+
+  footer{
+    text-align:center;font-size:11px;color:#98a2b3;padding:20px 20px 4px;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="tag">Meta Ads · Relatório de Desempenho</div>
+  <h1>Casas Paraíba</h1>
+  <div class="period">02 Jun — 01 Jul 2026 · Últimos 30 dias</div>
+</header>
+
+<main>
+
+  <div class="alert">
+    <b>⚠️ Anúncios parados desde 09/06</b>
+    As duas campanhas ativas atingiram o <b>limite de gasto da conta</b> (account spend limit) e estão sem veicular há mais de 3 semanas. Todo o investimento do período foi concentrado entre os dias 2 e 9 de junho. É necessário liberar/aumentar o limite de gastos na conta de anúncios para os anúncios voltarem a rodar.
+  </div>
+
+  <div class="section-title">Resumo do período</div>
+  <div class="kpi-grid">
+    <div class="kpi hl">
+      <div class="lbl">Investimento</div>
+      <div class="val">R$ 428,82</div>
+    </div>
+    <div class="kpi hl">
+      <div class="lbl">Resultados (conversas)</div>
+      <div class="val">141</div>
+    </div>
+    <div class="kpi">
+      <div class="lbl">Impressões</div>
+      <div class="val">66.900</div>
+    </div>
+    <div class="kpi">
+      <div class="lbl">Alcance</div>
+      <div class="val">34.686</div>
+    </div>
+    <div class="kpi">
+      <div class="lbl">Cliques</div>
+      <div class="val">1.078</div>
+    </div>
+    <div class="kpi">
+      <div class="lbl">CTR</div>
+      <div class="val">1,61%</div>
+    </div>
+    <div class="kpi">
+      <div class="lbl">CPC médio</div>
+      <div class="val">R$ 0,40</div>
+    </div>
+    <div class="kpi">
+      <div class="lbl">CPM médio</div>
+      <div class="val">R$ 6,41</div>
+    </div>
+    <div class="kpi">
+      <div class="lbl">Custo por resultado</div>
+      <div class="val">R$ 3,04</div>
+    </div>
+    <div class="kpi">
+      <div class="lbl">Frequência</div>
+      <div class="val">1,93</div>
+    </div>
+  </div>
+
+  <div class="section-title">Gasto por dia (quando houve veiculação)</div>
+  <div class="chart">
+    <div class="bars">
+      <div class="bar-wrap"><div class="bar" style="height:100%"></div><div class="bar-day">02/06</div></div>
+      <div class="bar-wrap"><div class="bar" style="height:83%"></div><div class="bar-day">03/06</div></div>
+      <div class="bar-wrap"><div class="bar" style="height:55%"></div><div class="bar-day">04/06</div></div>
+      <div class="bar-wrap"><div class="bar" style="height:50%"></div><div class="bar-day">05/06</div></div>
+      <div class="bar-wrap"><div class="bar" style="height:77%"></div><div class="bar-day">06/06</div></div>
+      <div class="bar-wrap"><div class="bar" style="height:62%"></div><div class="bar-day">07/06</div></div>
+      <div class="bar-wrap"><div class="bar" style="height:47%"></div><div class="bar-day">08/06</div></div>
+      <div class="bar-wrap"><div class="bar" style="height:60%"></div><div class="bar-day">09/06</div></div>
+    </div>
+    <div class="chart-note">De 10/06 a 01/07 não houve gasto — anúncios fora do ar (spend limit).</div>
+  </div>
+
+  <div class="section-title">Campanhas</div>
+
+  <div class="card">
+    <div class="top">
+      <div class="name">Vendas — Casas Paraíba (13.04)</div>
+      <span class="badge active">Sem veicular</span>
+    </div>
+    <div class="metrics-row">
+      <div><div class="m-lbl">Gasto</div><div class="m-val">R$ 235,38</div></div>
+      <div><div class="m-lbl">Impressões</div><div class="m-val">34.793</div></div>
+      <div><div class="m-lbl">Cliques</div><div class="m-val">709</div></div>
+      <div><div class="m-lbl">CTR</div><div class="m-val">2,04%</div></div>
+      <div><div class="m-lbl">CPC</div><div class="m-val">R$ 0,33</div></div>
+      <div><div class="m-lbl">CPM</div><div class="m-val">R$ 6,77</div></div>
+    </div>
+    <div class="result-line">104 conversas iniciadas · custo por resultado <b>R$ 2,26</b></div>
+  </div>
+
+  <div class="card">
+    <div class="top">
+      <div class="name">Vendas — Casas Paraíba (01.06)</div>
+      <span class="badge active">Sem veicular</span>
+    </div>
+    <div class="metrics-row">
+      <div><div class="m-lbl">Gasto</div><div class="m-val">R$ 193,44</div></div>
+      <div><div class="m-lbl">Impressões</div><div class="m-val">32.107</div></div>
+      <div><div class="m-lbl">Cliques</div><div class="m-val">369</div></div>
+      <div><div class="m-lbl">CTR</div><div class="m-val">1,15%</div></div>
+      <div><div class="m-lbl">CPC</div><div class="m-val">R$ 0,52</div></div>
+      <div><div class="m-lbl">CPM</div><div class="m-val">R$ 6,02</div></div>
+    </div>
+    <div class="result-line">37 conversas iniciadas · custo por resultado <b>R$ 5,23</b></div>
+  </div>
+
+  <div class="card">
+    <div class="top">
+      <div class="name">Tráfego de Perfil — Casas Paraíba (09.04)</div>
+      <span class="badge paused">Pausada</span>
+    </div>
+    <div class="metrics-row">
+      <div><div class="m-lbl">Gasto</div><div class="m-val">R$ 0,00</div></div>
+      <div><div class="m-lbl">Impressões</div><div class="m-val">—</div></div>
+      <div><div class="m-lbl">Cliques</div><div class="m-val">—</div></div>
+    </div>
+  </div>
+
+  <div class="section-title">Melhores anúncios (criativos)</div>
+
+  <div class="card">
+    <div class="top">
+      <div class="name">AD 05</div>
+      <span class="badge active">Melhor custo/resultado</span>
+    </div>
+    <div class="metrics-row">
+      <div><div class="m-lbl">Gasto</div><div class="m-val">R$ 235,38</div></div>
+      <div><div class="m-lbl">CTR</div><div class="m-val">2,04%</div></div>
+      <div><div class="m-lbl">CPC</div><div class="m-val">R$ 0,33</div></div>
+    </div>
+    <div class="result-line">104 conversas · custo por resultado <b>R$ 2,26</b></div>
+  </div>
+
+  <div class="card">
+    <div class="top">
+      <div class="name">AD 03</div>
+    </div>
+    <div class="metrics-row">
+      <div><div class="m-lbl">Gasto</div><div class="m-val">R$ 158,33</div></div>
+      <div><div class="m-lbl">CTR</div><div class="m-val">0,97%</div></div>
+      <div><div class="m-lbl">CPC</div><div class="m-val">R$ 0,59</div></div>
+    </div>
+    <div class="result-line">27 conversas · custo por resultado <b>R$ 5,86</b></div>
+  </div>
+
+  <div class="card">
+    <div class="top">
+      <div class="name">AD 02</div>
+    </div>
+    <div class="metrics-row">
+      <div><div class="m-lbl">Gasto</div><div class="m-val">R$ 25,09</div></div>
+      <div><div class="m-lbl">CTR</div><div class="m-val">2,19%</div></div>
+      <div><div class="m-lbl">CPC</div><div class="m-val">R$ 0,40</div></div>
+    </div>
+    <div class="result-line">7 conversas · custo por resultado <b>R$ 3,58</b></div>
+  </div>
+
+  <div class="card">
+    <div class="top">
+      <div class="name">AD 05 (variação)</div>
+    </div>
+    <div class="metrics-row">
+      <div><div class="m-lbl">Gasto</div><div class="m-val">R$ 10,02</div></div>
+      <div><div class="m-lbl">CTR</div><div class="m-val">2,40%</div></div>
+      <div><div class="m-lbl">CPC</div><div class="m-val">R$ 0,27</div></div>
+    </div>
+    <div class="result-line">3 conversas · custo por resultado <b>R$ 3,34</b></div>
+  </div>
+
+  <div class="section-title">O que fazer agora</div>
+  <div class="note">
+    1. Resolver o limite de gasto da conta para os anúncios voltarem a veicular — essa é a prioridade nº 1, sem isso não há investimento nem resultado novo.<br><br>
+    2. O <b>AD 05</b> é o criativo mais eficiente (R$ 2,26 por conversa) — priorizar orçamento nele quando a conta voltar a rodar.<br><br>
+    3. A campanha "01.06" está com custo por resultado 2,3x maior que a "13.04" — vale revisar público/criativo antes de escalar.<br><br>
+    4. Score de oportunidade da Meta para a conta: <b>100/100</b>, sem alertas de fadiga de criativo ou público restrito no período.
+  </div>
+
+  <footer>
+    Relatório gerado automaticamente com dados da Meta Ads API · Conta: CASAS PARAIBA -CA
+  </footer>
+
+</main>
+
+</body>
+</html>
