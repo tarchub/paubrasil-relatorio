@@ -6,138 +6,170 @@
 <title>Casas Paraíba — Relatório Meta Ads</title>
 <style>
   *{margin:0;padding:0;box-sizing:border-box;}
+  :root{
+    --bg:#0a0c11;
+    --card:#141a24;
+    --card2:#1a212d;
+    --brd:rgba(255,255,255,.07);
+    --brd2:rgba(255,255,255,.12);
+    --text:#f4f6f8;
+    --muted:#8b93a3;
+    --muted2:#5c6577;
+    --o1:#ff7a1a;
+    --o2:#ffc247;
+    --grad:linear-gradient(135deg,var(--o1),var(--o2));
+    --fb:#1877f2;
+    --ig1:#c1338d;--ig2:#f7941d;
+    --wa:#25d366;
+    --ok:#2fbf6f;
+  }
   body{
     font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
-    background:#f2f4f7;
-    color:#1a1d23;
+    background:var(--bg);
+    color:var(--text);
     line-height:1.45;
-    padding-bottom:32px;
+    padding-bottom:36px;
   }
+
   header{
-    background:linear-gradient(135deg,#0f3d91,#1877f2);
-    color:#fff;
-    padding:28px 20px 24px;
+    position:relative;
+    overflow:hidden;
+    background:radial-gradient(120% 140% at 15% -10%,#241608 0%,#0a0c11 55%),var(--bg);
+    padding:34px 20px 26px;
     text-align:center;
+    border-bottom:1px solid var(--brd);
+  }
+  header::before{
+    content:'';position:absolute;top:-60px;right:-60px;width:220px;height:220px;border-radius:50%;
+    background:var(--grad);opacity:.16;filter:blur(30px);
+  }
+  .logo{
+    width:56px;height:56px;border-radius:50%;margin:0 auto 14px;
+    background:conic-gradient(from 200deg,#0d1520,#0d1520 55%,var(--o1) 75%,var(--o2) 100%);
+    border:1px solid var(--brd2);
+    display:flex;align-items:center;justify-content:center;
+    font-family:Georgia,'Times New Roman',serif;
+    font-weight:700;font-size:22px;color:var(--o2);position:relative;z-index:1;
+    box-shadow:0 0 0 4px rgba(255,122,26,.08);
   }
   header .tag{
-    font-size:11px;
-    font-weight:700;
-    letter-spacing:.14em;
-    text-transform:uppercase;
-    opacity:.85;
-    margin-bottom:6px;
+    position:relative;z-index:1;
+    font-size:10.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--o2);margin-bottom:8px;
   }
   header h1{
-    font-size:24px;
-    font-weight:800;
-    line-height:1.2;
+    position:relative;z-index:1;
+    font-size:27px;font-weight:800;line-height:1.15;
+    background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  header .sub{
+    position:relative;z-index:1;
+    font-size:12.5px;color:var(--muted);margin-top:6px;
   }
   header .period{
-    margin-top:10px;
-    display:inline-block;
-    font-size:12.5px;
-    background:rgba(255,255,255,.16);
-    border:1px solid rgba(255,255,255,.3);
-    border-radius:20px;
-    padding:5px 14px;
+    position:relative;z-index:1;
+    margin-top:14px;display:inline-block;font-size:12px;font-weight:600;
+    background:rgba(255,122,26,.1);border:1px solid rgba(255,178,60,.35);color:#ffcf8a;
+    border-radius:20px;padding:6px 16px;
   }
 
-  main{max-width:480px;margin:0 auto;padding:16px;}
-
-  .alert{
-    background:#fff4e5;
-    border:1px solid #f5c26b;
-    border-left:4px solid #e8912d;
-    border-radius:10px;
-    padding:14px 16px;
-    margin-bottom:18px;
-    font-size:13.5px;
-  }
-  .alert b{color:#8a4b00;display:block;font-size:14px;margin-bottom:4px;}
+  main{max-width:480px;margin:0 auto;padding:18px 16px;}
 
   .section-title{
-    font-size:11px;
-    font-weight:700;
-    letter-spacing:.12em;
-    text-transform:uppercase;
-    color:#5a6472;
-    margin:22px 0 10px;
+    font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--muted2);margin:26px 0 10px;display:flex;align-items:center;gap:8px;
   }
+  .section-title::before{content:'';width:10px;height:2px;background:var(--grad);border-radius:2px;}
 
-  .kpi-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:10px;
-  }
+  .kpi-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
   .kpi{
-    background:#fff;
-    border-radius:12px;
-    padding:14px;
-    box-shadow:0 1px 3px rgba(16,24,40,.06);
+    background:var(--card);border:1px solid var(--brd);border-radius:14px;padding:14px;
   }
-  .kpi .lbl{font-size:11.5px;color:#667085;font-weight:600;margin-bottom:4px;}
-  .kpi .val{font-size:20px;font-weight:800;color:#0f172a;}
-  .kpi.hl{background:#eaf2ff;}
-  .kpi.hl .val{color:#0f3d91;}
+  .kpi .lbl{font-size:11px;color:var(--muted);font-weight:600;margin-bottom:5px;}
+  .kpi .val{font-size:20px;font-weight:800;color:var(--text);}
+  .kpi.hl{
+    background:linear-gradient(160deg,rgba(255,122,26,.14),rgba(255,194,71,.05));
+    border:1px solid rgba(255,178,60,.3);
+  }
+  .kpi.hl .val{
+    background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;
+  }
 
   .card{
-    background:#fff;
-    border-radius:12px;
-    padding:16px;
-    margin-bottom:12px;
-    box-shadow:0 1px 3px rgba(16,24,40,.06);
+    background:var(--card);border:1px solid var(--brd);border-radius:14px;
+    padding:16px;margin-bottom:12px;
   }
   .card .top{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin-bottom:10px;}
-  .card .name{font-size:14.5px;font-weight:700;color:#0f172a;}
-  .badge{
-    font-size:10px;font-weight:700;letter-spacing:.04em;
-    padding:3px 9px;border-radius:20px;white-space:nowrap;
-  }
-  .badge.active{background:#e6f7ed;color:#1a7f4b;}
-  .badge.paused{background:#f1f2f4;color:#667085;}
-  .metrics-row{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:8px;
-    margin-top:8px;
-  }
-  .metrics-row div{text-align:left;}
-  .metrics-row .m-lbl{font-size:10.5px;color:#8a94a6;}
-  .metrics-row .m-val{font-size:14px;font-weight:700;color:#1a1d23;}
-  .result-line{
-    margin-top:10px;
-    padding-top:10px;
-    border-top:1px dashed #e4e7ec;
-    font-size:13px;
-    color:#344054;
-  }
-  .result-line b{color:#0f3d91;}
+  .card .name{font-size:14.5px;font-weight:700;color:var(--text);}
+  .badge{font-size:9.5px;font-weight:700;letter-spacing:.03em;padding:4px 10px;border-radius:20px;white-space:nowrap;}
+  .badge.active{background:rgba(47,191,111,.14);color:#4ede8f;border:1px solid rgba(47,191,111,.3);}
+  .badge.paused{background:rgba(255,255,255,.06);color:var(--muted);border:1px solid var(--brd);}
+  .badge.best{background:rgba(255,178,60,.14);color:#ffcf8a;border:1px solid rgba(255,178,60,.35);}
 
-  .chart{
-    background:#fff;border-radius:12px;padding:16px 16px 10px;
-    box-shadow:0 1px 3px rgba(16,24,40,.06);
+  .metrics-row{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:8px;}
+  .metrics-row .m-lbl{font-size:10.5px;color:var(--muted2);}
+  .metrics-row .m-val{font-size:14px;font-weight:700;color:var(--text);}
+  .result-line{
+    margin-top:10px;padding-top:10px;border-top:1px dashed var(--brd);
+    font-size:13px;color:#b7bfcc;
   }
+  .result-line b{color:#ffcf8a;}
+
+  .chart{background:var(--card);border:1px solid var(--brd);border-radius:14px;padding:16px 16px 10px;}
   .bars{display:flex;align-items:flex-end;gap:6px;height:110px;}
   .bar-wrap{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;}
-  .bar{width:100%;background:linear-gradient(180deg,#1877f2,#0f3d91);border-radius:5px 5px 2px 2px;min-height:4px;}
-  .bar-day{font-size:9.5px;color:#98a2b3;margin-top:6px;}
-  .chart-note{font-size:11.5px;color:#98a2b3;margin-top:10px;text-align:center;}
+  .bar{width:100%;background:var(--grad);border-radius:5px 5px 2px 2px;min-height:4px;}
+  .bar-day{font-size:9px;color:var(--muted2);margin-top:6px;}
+
+  .barrow{margin-bottom:14px;}
+  .barrow:last-child{margin-bottom:0;}
+  .br-top{display:flex;justify-content:space-between;align-items:baseline;font-size:13px;margin-bottom:6px;}
+  .br-lbl{font-weight:700;color:var(--text);}
+  .br-val{font-size:11.5px;color:var(--muted);font-weight:600;}
+  .br-track{height:8px;background:#1c2330;border-radius:6px;overflow:hidden;}
+  .br-fill{height:100%;background:var(--grad);border-radius:6px;}
+  .br-fill.blue{background:linear-gradient(90deg,#1877f2,#5aa4ff);}
+  .br-sub{font-size:11px;color:var(--muted2);margin-top:5px;}
+
+  .plat-grid{display:grid;grid-template-columns:1fr;gap:10px;}
+  .plat-card{
+    background:var(--card);border:1px solid var(--brd);border-radius:14px;padding:14px 16px;
+    display:flex;align-items:center;gap:12px;
+  }
+  .plat-dot{width:34px;height:34px;border-radius:10px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:800;color:#fff;}
+  .plat-dot.fb{background:var(--fb);}
+  .plat-dot.ig{background:linear-gradient(135deg,var(--ig2),var(--ig1));}
+  .plat-dot.wa{background:var(--wa);color:#0a0c11;}
+  .plat-info{flex:1;}
+  .plat-name{font-size:13.5px;font-weight:700;color:var(--text);margin-bottom:2px;}
+  .plat-meta{font-size:11px;color:var(--muted);}
+  .plat-share{text-align:right;}
+  .plat-share .p-val{font-size:15px;font-weight:800;color:var(--text);}
+  .plat-share .p-pct{font-size:10.5px;color:var(--muted2);}
+
+  .insight{
+    background:linear-gradient(160deg,rgba(255,122,26,.12),rgba(255,194,71,.03));
+    border:1px solid rgba(255,178,60,.28);border-radius:14px;
+    padding:14px 16px;margin-bottom:12px;font-size:13px;color:#e8ddd0;
+  }
+  .insight b{color:#ffcf8a;}
 
   .note{
-    font-size:12px;color:#667085;background:#fff;border-radius:10px;
-    padding:12px 14px;margin-top:6px;box-shadow:0 1px 3px rgba(16,24,40,.06);
+    font-size:12.5px;color:#b7bfcc;background:var(--card);border:1px solid var(--brd);
+    border-radius:14px;padding:14px 16px;margin-top:6px;
   }
+  .note b{color:#ffcf8a;}
 
-  footer{
-    text-align:center;font-size:11px;color:#98a2b3;padding:20px 20px 4px;
-  }
+  footer{text-align:center;font-size:11px;color:var(--muted2);padding:24px 20px 4px;}
 </style>
 </head>
 <body>
 
 <header>
+  <div class="logo">P</div>
   <div class="tag">Meta Ads · Relatório de Desempenho</div>
   <h1>Casas Paraíba</h1>
+  <div class="sub">Mineração · Irrigação · Náutica — Boa Vista/RR</div>
   <div class="period">02 Jun — 01 Jul 2026 · Últimos 30 dias</div>
 </header>
 
@@ -187,7 +219,7 @@
     </div>
   </div>
 
-  <div class="section-title">Gasto por dia</div>
+  <div class="section-title">Investimento por dia</div>
   <div class="chart">
     <div class="bars">
       <div class="bar-wrap"><div class="bar" style="height:100%"></div><div class="bar-day">02/06</div></div>
@@ -199,6 +231,134 @@
       <div class="bar-wrap"><div class="bar" style="height:47%"></div><div class="bar-day">08/06</div></div>
       <div class="bar-wrap"><div class="bar" style="height:60%"></div><div class="bar-day">09/06</div></div>
     </div>
+  </div>
+
+  <div class="section-title">Público por idade</div>
+  <div class="card">
+    <div class="barrow">
+      <div class="br-top"><span class="br-lbl">35-44 anos</span><span class="br-val">R$ 134,50 · 31,4%</span></div>
+      <div class="br-track"><div class="br-fill" style="width:31.4%"></div></div>
+      <div class="br-sub">CTR 1,46% · CPC R$ 0,43 · CPM R$ 6,22</div>
+    </div>
+    <div class="barrow">
+      <div class="br-top"><span class="br-lbl">25-34 anos</span><span class="br-val">R$ 123,38 · 28,8%</span></div>
+      <div class="br-track"><div class="br-fill" style="width:28.8%"></div></div>
+      <div class="br-sub">CTR 1,38% · CPC R$ 0,38 · CPM R$ 5,23</div>
+    </div>
+    <div class="barrow">
+      <div class="br-top"><span class="br-lbl">45-54 anos</span><span class="br-val">R$ 106,10 · 24,7%</span></div>
+      <div class="br-track"><div class="br-fill" style="width:24.7%"></div></div>
+      <div class="br-sub">CTR 1,89% · CPC R$ 0,41 · CPM R$ 7,70</div>
+    </div>
+    <div class="barrow">
+      <div class="br-top"><span class="br-lbl">55-64 anos</span><span class="br-val">R$ 48,82 · 11,4%</span></div>
+      <div class="br-track"><div class="br-fill" style="width:11.4%"></div></div>
+      <div class="br-sub">CTR 2,13% · CPC R$ 0,37 · CPM R$ 7,93</div>
+    </div>
+    <div class="barrow">
+      <div class="br-top"><span class="br-lbl">65+ anos</span><span class="br-val">R$ 16,02 · 3,7%</span></div>
+      <div class="br-track"><div class="br-fill" style="width:3.7%"></div></div>
+      <div class="br-sub">CTR 2,55% · CPC R$ 0,36 · CPM R$ 9,06</div>
+    </div>
+  </div>
+
+  <div class="section-title">Público por gênero</div>
+  <div class="card">
+    <div class="barrow">
+      <div class="br-top"><span class="br-lbl">Homens</span><span class="br-val">R$ 359,56 · 83,9%</span></div>
+      <div class="br-track"><div class="br-fill" style="width:83.9%"></div></div>
+      <div class="br-sub">56.977 impressões · CTR 1,59% · CPC R$ 0,40</div>
+    </div>
+    <div class="barrow">
+      <div class="br-top"><span class="br-lbl">Mulheres</span><span class="br-val">R$ 67,84 · 15,8%</span></div>
+      <div class="br-track"><div class="br-fill" style="width:15.8%"></div></div>
+      <div class="br-sub">9.752 impressões · CTR 1,73% · CPC R$ 0,40</div>
+    </div>
+  </div>
+
+  <div class="insight">
+    <b>Público predominante:</b> homens de 25 a 54 anos concentram cerca de 85% do investimento — coerente com o perfil de compradores de equipamentos de mineração, irrigação e náutica.
+  </div>
+
+  <div class="section-title">Plataforma</div>
+  <div class="plat-grid">
+    <div class="plat-card">
+      <div class="plat-dot fb">f</div>
+      <div class="plat-info">
+        <div class="plat-name">Facebook</div>
+        <div class="plat-meta">42.389 impr · CTR 1,90% · CPC R$ 0,32</div>
+      </div>
+      <div class="plat-share"><div class="p-val">R$ 260,66</div><div class="p-pct">60,8%</div></div>
+    </div>
+    <div class="plat-card">
+      <div class="plat-dot ig">◎</div>
+      <div class="plat-info">
+        <div class="plat-name">Instagram</div>
+        <div class="plat-meta">19.555 impr · CTR 1,20% · CPC R$ 0,62</div>
+      </div>
+      <div class="plat-share"><div class="p-val">R$ 145,33</div><div class="p-pct">33,9%</div></div>
+    </div>
+    <div class="plat-card">
+      <div class="plat-dot wa">✆</div>
+      <div class="plat-info">
+        <div class="plat-name">WhatsApp</div>
+        <div class="plat-meta">4.956 impr · CTR 0,73% · CPC R$ 0,63</div>
+      </div>
+      <div class="plat-share"><div class="p-val">R$ 22,83</div><div class="p-pct">5,3%</div></div>
+    </div>
+  </div>
+
+  <div class="section-title">Posicionamento</div>
+  <div class="card">
+    <div class="barrow">
+      <div class="br-top"><span class="br-lbl">Feed (FB + IG)</span><span class="br-val">R$ 230,48 · 53,7%</span></div>
+      <div class="br-track"><div class="br-fill" style="width:53.7%"></div></div>
+      <div class="br-sub">36.191 impr · CTR 1,66% · CPC R$ 0,38</div>
+    </div>
+    <div class="barrow">
+      <div class="br-top"><span class="br-lbl">Reels Facebook</span><span class="br-val">R$ 70,41 · 16,4%</span></div>
+      <div class="br-track"><div class="br-fill" style="width:16.4%"></div></div>
+      <div class="br-sub">10.432 impr · CTR 2,29% · CPC R$ 0,29</div>
+    </div>
+    <div class="barrow">
+      <div class="br-top"><span class="br-lbl">Reels Instagram</span><span class="br-val">R$ 46,35 · 10,8%</span></div>
+      <div class="br-track"><div class="br-fill" style="width:10.8%"></div></div>
+      <div class="br-sub">6.149 impr · CTR 1,30% · CPC R$ 0,58</div>
+    </div>
+    <div class="barrow">
+      <div class="br-top"><span class="br-lbl">Status WhatsApp</span><span class="br-val">R$ 22,83 · 5,3%</span></div>
+      <div class="br-track"><div class="br-fill" style="width:5.3%"></div></div>
+      <div class="br-sub">4.956 impr · CTR 0,73% · CPC R$ 0,63</div>
+    </div>
+    <div class="barrow">
+      <div class="br-top"><span class="br-lbl">Stories Instagram</span><span class="br-val">R$ 34,35 · 8,0%</span></div>
+      <div class="br-track"><div class="br-fill" style="width:8.0%"></div></div>
+      <div class="br-sub">4.937 impr · CTR 1,26% · CPC R$ 0,55</div>
+    </div>
+    <div class="barrow">
+      <div class="br-top"><span class="br-lbl">Stories Facebook</span><span class="br-val">R$ 19,08 · 4,4%</span></div>
+      <div class="br-track"><div class="br-fill" style="width:4.4%"></div></div>
+      <div class="br-sub">2.150 impr · CTR 1,67% · CPC R$ 0,53</div>
+    </div>
+    <div class="barrow">
+      <div class="br-top"><span class="br-lbl">Marketplace</span><span class="br-val">R$ 2,70 · 0,6%</span></div>
+      <div class="br-track"><div class="br-fill" style="width:0.6%"></div></div>
+      <div class="br-sub">998 impr · CTR 0,90% · CPC R$ 0,30</div>
+    </div>
+    <div class="barrow">
+      <div class="br-top"><span class="br-lbl">Busca</span><span class="br-val">R$ 2,00 · 0,5%</span></div>
+      <div class="br-track"><div class="br-fill" style="width:0.5%"></div></div>
+      <div class="br-sub">792 impr · CTR 1,77% · CPC R$ 0,14</div>
+    </div>
+    <div class="barrow">
+      <div class="br-top"><span class="br-lbl">Outros</span><span class="br-val">R$ 0,62 · 0,1%</span></div>
+      <div class="br-track"><div class="br-fill" style="width:0.1%"></div></div>
+      <div class="br-sub">Feed do perfil, explorar e vídeo in-stream</div>
+    </div>
+  </div>
+
+  <div class="insight">
+    <b>Reels é o posicionamento mais eficiente:</b> Reels Facebook (CPC R$ 0,29 · CTR 2,29%) e Reels Instagram têm o melhor custo por clique da conta — vale reforçar criativos verticais em vídeo curto.
   </div>
 
   <div class="section-title">Campanhas</div>
@@ -252,7 +412,7 @@
   <div class="card">
     <div class="top">
       <div class="name">AD 05</div>
-      <span class="badge active">Melhor custo/resultado</span>
+      <span class="badge best">Melhor custo/resultado</span>
     </div>
     <div class="metrics-row">
       <div><div class="m-lbl">Gasto</div><div class="m-val">R$ 235,38</div></div>
@@ -302,7 +462,9 @@
   <div class="note">
     1. O <b>AD 05</b> é o criativo mais eficiente (R$ 2,26 por conversa) — priorizar orçamento nele.<br><br>
     2. A campanha "01.06" está com custo por resultado 2,3x maior que a "13.04" — vale revisar público/criativo antes de escalar.<br><br>
-    3. Score de oportunidade da Meta para a conta: <b>100/100</b>, sem alertas de fadiga de criativo ou público restrito no período.
+    3. <b>Reels</b> (Facebook e Instagram) entrega o CPC mais barato da conta — bom espaço para testar mais criativos em vídeo vertical.<br><br>
+    4. O público de <b>35-54 anos</b> responde melhor (CTR mais alto e CPM mais eficiente) — considerar concentrar mais verba nessa faixa.<br><br>
+    5. Score de oportunidade da Meta para a conta: <b>100/100</b>, sem alertas de fadiga de criativo ou público restrito no período.
   </div>
 
   <footer>
