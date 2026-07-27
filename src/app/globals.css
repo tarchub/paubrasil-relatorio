@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+body {
+  background: #0a0a0b;
+  color: #e8e1d4;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Scrollbar discreta */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(232, 225, 212, 0.12);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(232, 225, 212, 0.22);
+}
+
+@layer components {
+  .card {
+    @apply rounded-2xl border border-line bg-ink-800/60 shadow-card;
+  }
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2 text-sm font-medium transition-colors disabled:opacity-50 disabled:pointer-events-none;
+  }
+  .btn-primary {
+    @apply btn bg-gold text-ink hover:bg-gold-soft;
+  }
+  .btn-ghost {
+    @apply btn border border-line text-sand hover:bg-ink-700;
+  }
+  .input {
+    @apply w-full rounded-xl border border-line bg-ink-700/40 px-3.5 py-2.5 text-sm text-sand placeholder:text-sand-muted/60 outline-none focus:border-gold/50;
+  }
+  .label {
+    @apply block text-xs font-medium uppercase tracking-wide text-sand-muted mb-1.5;
+  }
+  .chip {
+    @apply inline-flex items-center gap-1 rounded-full border border-line px-2.5 py-1 text-xs text-sand-muted;
+  }
+}
