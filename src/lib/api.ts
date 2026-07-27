@@ -6,11 +6,15 @@ import { createClient } from "@/lib/supabase/server";
 /**
  * Autoriza chamadas de cron via header `Authorization: Bearer <CRON_SECRET>`.
  * A Vercel injeta esse header automaticamente para cron jobs quando CRON_SECRET
- * está definido. Em dev (sem CRON_SECRET) permite para facilitar testes locais.
+ * está definido nas variáveis de ambiente do projeto.
+ *
+ * Falha fechado: sem CRON_SECRET em produção, nega. Isso evita que as rotas de
+ * coleta/processamento fiquem abertas (e consumindo API de IA) por esquecimento.
+ * Em desenvolvimento, libera para facilitar testes locais.
  */
 export function authorizeCron(request: NextRequest): boolean {
   const { CRON_SECRET } = getServerEnv();
-  if (!CRON_SECRET) return true; // dev
+  if (!CRON_SECRET) return process.env.NODE_ENV !== "production";
   const header = request.headers.get("authorization");
   return header === `Bearer ${CRON_SECRET}`;
 }
